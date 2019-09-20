@@ -1,26 +1,24 @@
 
 def find_best_product(matrix):
   leng = len(matrix)
-  max_sum = -1
+  max_product = -1
 
-  def find_best_path(x, y, sumVal):
-    print(x, y, sumVal)
+  def find_best_path(x, y, productVal):
     if(x >= leng or y >= leng):
       return
 
     if(x == leng - 1 and y == leng - 1):
-      nonlocal max_sum
-      sumVal *= matrix[x][y]
-      max_sum = max(max_sum, sumVal)
+      nonlocal max_product
+      productVal *= matrix[x][y]
+      max_product = max(max_product, productVal)
       return 
 
-    sumVal *= matrix[x][y]
-    find_best_path(x, y + 1, sumVal)
-    find_best_path(x + 1, y, sumVal)
+    productVal *= matrix[x][y]
+    find_best_path(x, y + 1, productVal)
+    find_best_path(x + 1, y, productVal)
   
   find_best_path(0, 0, 1)
-  print(max_sum)
-  return max_sum
+  return max_product
 
 test_matrix_1 = [
   [1,2,3],
